@@ -1,1 +1,82 @@
+# Caesar Cipher in C
 
+## Project Overview
+
+This project implements a Caesar Cipher encryption and decryption tool in the C programming language. The Caesar Cipher is a classic cryptographic technique that shifts the letters in a string by a fixed number of positions in the alphabet. This project includes functions for encoding and decoding text, a command-line interface (CLI) for interacting with the program, and unit tests to ensure correctness.
+
+## Features
+
+- **Encoding**: Encrypts a text by shifting each letter by a specified number of positions.
+- **Decoding**: Decrypts a text by shifting each letter back by the specified number of positions.
+- **Special Character Handling**: Non-alphabetic characters are preserved and remain unchanged in the output.
+- **Test-Driven Development (TDD)**: The project uses TDD principles to ensure robust and correct implementations.
+- **Command-Line Interface (CLI)**: Allows users to easily run the program from the terminal, specifying the operation (encode/decode), shift value, input file, and output file.
+
+## File Structure
+
+- **cipher.h**: Header file declaring the functions `encode` and `decode`.
+- **cipher.c**: Implementation of the Caesar Cipher functions.
+- **main.c**: Contains the main function, argument validation, and command processing logic.
+- **tests.h**: Header file for the test functions.
+- **tests.c**: Implementation of unit tests to validate the encoding and decoding functions.
+
+## Compilation
+
+To compile the program, use the following `gcc` command:
+
+```bash
+gcc -Wextra -Wall -Wvla -std=c99 -lm cipher.c tests.c main.c -o cipher
+```
+
+This command will generate an executable named `cipher`.
+
+## Usage
+
+The program supports two modes: **encryption/decryption** and **testing**.
+
+### Encrypt/Decrypt Mode
+
+To encode or decode a text, run the program with the following arguments:
+
+```bash
+./cipher <command> <shift> <input_file> <output_file>
+```
+
+- **command**: Either `encode` or `decode`.
+- **shift**: An integer representing the number of positions to shift each letter.
+- **input_file**: Path to the input text file.
+- **output_file**: Path to the output text file.
+
+Example:
+
+```bash
+./cipher encode 3 in.txt out.txt
+./cipher decode 3 out.txt in.txt
+```
+
+### Test Mode
+
+To run the unit tests, execute the program with the `test` argument:
+
+```bash
+./cipher test
+```
+
+The program will return `EXIT_SUCCESS` if all tests pass or `EXIT_FAILURE` if any test fails.
+
+## Error Handling
+
+The program includes various error checks to handle invalid input gracefully. It will print appropriate error messages to `stderr` and exit with `EXIT_FAILURE` if:
+
+- The number of arguments is incorrect.
+- The command is invalid.
+- The shift value is not a valid integer.
+- The input or output file cannot be opened.
+
+## License
+
+This project is released under the MIT License. Feel free to use, modify, and distribute the code.
+
+## Acknowledgments
+
+This project was created as an educational exercise in C programming, emphasizing concepts such as string manipulation, file handling, and Test-Driven Development (TDD).
